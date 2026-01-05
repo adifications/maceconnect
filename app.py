@@ -226,5 +226,4 @@ if prompt := st.chat_input(f"Ask about {selected_branch} syllabus, exams..."):
                 message_placeholder.markdown(response.text)
                 st.session_state.messages.append({"role": "assistant", "content": response.text})
             except Exception as e:
-                message_placeholder.error("I hit a snag. Please ask again.")
-                message_placeholder.error("I hit a snag. Please ask again.")
+                message_placeholder.error(f"Detailed Error: {e}")
