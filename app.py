@@ -3,8 +3,8 @@ import google.generativeai as genai
 import os
 
 # --- CONFIGURATION ---
-# PASTE YOUR KEY HERE
-GOOGLE_API_KEY = "AIzaSyBVam1P2hpek_l1ltVev0IiRshOsM6V9IQ"
+# Fetch the key securely from Streamlit Secrets
+GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 
 genai.configure(api_key=GOOGLE_API_KEY)
 
@@ -226,4 +226,5 @@ if prompt := st.chat_input(f"Ask about {selected_branch} syllabus, exams..."):
                 message_placeholder.markdown(response.text)
                 st.session_state.messages.append({"role": "assistant", "content": response.text})
             except Exception as e:
+                message_placeholder.error("I hit a snag. Please ask again.")
                 message_placeholder.error("I hit a snag. Please ask again.")
